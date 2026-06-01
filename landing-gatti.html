@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GIANGATTO — Real food for happy cats</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Gattone GIANGATTO: cicciotto e sornione, definito una volta e ricolorato con custom properties -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="chubbyCat">
+      <!-- coda spessa arrotolata -->
+      <path d="M162 148 Q198 136 190 104 Q184 82 164 90" fill="none"
+            stroke="var(--fur, #FFC488)" stroke-width="18" stroke-linecap="round"/>
+      <path d="M162 148 Q198 136 190 104 Q184 82 164 90" fill="none"
+            stroke="var(--stripe, #F09A3E)" stroke-width="18" stroke-linecap="round"
+            stroke-dasharray="7 16" opacity="0.85"/>
+      <!-- orecchie piccole -->
+      <path d="M66 46 L72 18 L94 34 Z" fill="var(--fur, #FFC488)"
+            stroke="var(--outline, #3B2C4A)" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M134 46 L128 18 L106 34 Z" fill="var(--fur, #FFC488)"
+            stroke="var(--outline, #3B2C4A)" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M74 38 L77 26 L88 34 Z" fill="#FFD7C7"/>
+      <path d="M126 38 L123 26 L112 34 Z" fill="#FFD7C7"/>
+      <!-- corpone a pera -->
+      <ellipse cx="100" cy="128" rx="68" ry="56" fill="var(--fur, #FFC488)"
+               stroke="var(--outline, #3B2C4A)" stroke-width="3"/>
+      <!-- strisce sui fianchi -->
+      <path d="M38 110 q12 6 22 2" fill="none" stroke="var(--stripe, #F09A3E)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M40 130 q12 6 22 2" fill="none" stroke="var(--stripe, #F09A3E)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M162 112 q-12 6 -22 2" fill="none" stroke="var(--stripe, #F09A3E)" stroke-width="6" stroke-linecap="round"/>
+      <!-- pancione bianco con blush rosa -->
+      <ellipse cx="100" cy="136" rx="47" ry="42" fill="#FFF9F4"/>
+      <ellipse cx="100" cy="144" rx="31" ry="23" fill="#FFCFDC" opacity="0.55"/>
+      <!-- testa piccola rispetto al corpo -->
+      <circle cx="100" cy="64" r="35" fill="var(--fur, #FFC488)"
+              stroke="var(--outline, #3B2C4A)" stroke-width="3"/>
+      <!-- strisce fronte -->
+      <rect x="92" y="31" width="5" height="13" rx="2.5" fill="var(--stripe, #F09A3E)"/>
+      <rect x="103" y="29" width="5" height="15" rx="2.5" fill="var(--stripe, #F09A3E)"/>
+      <!-- muso bianco -->
+      <ellipse cx="100" cy="76" rx="22" ry="17" fill="#FFF9F4"/>
+      <!-- occhi sornioni a mezza palpebra -->
+      <path d="M74 62 q7 7 14 0" fill="none" stroke="var(--outline, #3B2C4A)" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M112 62 q7 7 14 0" fill="none" stroke="var(--outline, #3B2C4A)" stroke-width="3.4" stroke-linecap="round"/>
+      <!-- guanciotte -->
+      <ellipse cx="70" cy="76" rx="8" ry="5" fill="#FFB3C0" opacity="0.8"/>
+      <ellipse cx="130" cy="76" rx="8" ry="5" fill="#FFB3C0" opacity="0.8"/>
+      <!-- naso + bocca compiaciuta -->
+      <path d="M97 72 Q100 75 103 72 L100 76 Z" fill="var(--outline, #3B2C4A)"/>
+      <path d="M94 80 Q97 84 100 80 Q103 84 106 80" fill="none"
+            stroke="var(--outline, #3B2C4A)" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- baffi -->
+      <path d="M58 70 L42 66 M58 78 L42 80" stroke="var(--outline, #3B2C4A)" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M142 70 L158 66 M142 78 L158 80" stroke="var(--outline, #3B2C4A)" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- zampette davanti appoggiate sulla panza -->
+      <ellipse cx="80" cy="172" rx="15" ry="9" fill="#FFF9F4" stroke="var(--outline, #3B2C4A)" stroke-width="3"/>
+      <ellipse cx="120" cy="172" rx="15" ry="9" fill="#FFF9F4" stroke="var(--outline, #3B2C4A)" stroke-width="3"/>
+    </g>
+    <path id="spark" d="M12 0 Q13.5 9 24 12 Q13.5 15 12 24 Q10.5 15 0 12 Q10.5 9 12 0 Z"/>
+    <!-- icona logo: musetto nel cerchio lavanda -->
+    <g id="logoMark">
+      <circle cx="24" cy="24" r="24" fill="var(--primary, #B8A4FF)"/>
+      <g class="ears">
+        <path d="M12 20 L15 8 L24 16 Z" fill="#FFF9F1"/>
+        <path d="M36 20 L33 8 L24 16 Z" fill="#FFF9F1"/>
+      </g>
+      <circle cx="24" cy="27" r="13" fill="#FFF9F1"/>
+      <path d="M17 25 q3 3 6 0 M25 25 q3 3 6 0" fill="none" stroke="#2F2A3A" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M21 30 q1.5 2 3 0 q1.5 2 3 0" fill="none" stroke="#2F2A3A" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M13 28 L8 27 M13 31 L8 32 M35 28 L40 27 M35 31 L40 32" stroke="#2F2A3A" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M31 12 q2.5 1 2.5 3.5 q0 2 -2.5 4 q-2.5 -2 -2.5 -4 q0 -2.5 2.5 -3.5 Z" fill="#FFD7C7"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ══ ANNOUNCEMENT ══ -->
+<div class="announce">🐾 Spedizione gratuita sopra i 39€ — fusa incluse nel prezzo</div>
+
+<!-- ══ HEADER ══ -->
+<header class="site">
+  <nav class="nav" aria-label="principale">
+    <a class="logo" href="#">
+      <svg class="mark" width="42" height="42" viewBox="0 0 48 48" aria-hidden="true"><use href="#logoMark"/></svg>
+      <span class="word"><span>G</span><span>i</span><span>A</span><span>N</span><span>G</span><span>A</span><span>T</span><span>T</span><span>o</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#prodotti">Shop</a>
+      <a href="#">Promo</a>
+      <a href="#mission">Chi siamo</a>
+      <a href="#">Blog</a>
+      <a href="#">Diventa Rivenditore</a>
+    </div>
+    <div class="nav-icons" aria-hidden="true">
+      <a href="#" title="Account">👤</a>
+      <a href="#" title="Cerca">🔍</a>
+      <a href="#" title="Carrello">🛒</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="proof"><span class="stars" aria-hidden="true">★★★★★</span> Approvato da 12.000 gatti esigenti</span>
+      <h1>Basta con le solite crocchette tristi</h1>
+      <p class="sub">Scegli i bocconcini veri, tagliati a coltello.
+      L'unica pappa con l'80% di pesce e carne — il resto sono coccole.</p>
+      <a class="btn" href="#prodotti">Shop now</a>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 560 340" width="520" role="img"
+           aria-label="Logotipo Giangatto con gattone sornione sdraiato sulla O">
+        <!-- livello 1: accenti di sfondo (parallax veloce) -->
+        <g data-plx="0.22">
+          <path d="M506 58 l10 -18 M526 72 l16 -12 M534 96 l20 -4"
+                stroke="#E8E1FF" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <use href="#spark" x="66" y="52" fill="#FFE9A8" class="sparkle"/>
+          <use href="#spark" x="140" y="118" fill="#E8E1FF" class="sparkle s2"/>
+          <path d="M64 170 q7 -9 14 -1 q6 7 -2 14 l-9 8 l-8 -9 q-7 -8 5 -12 Z" fill="#F58E8E"/>
+          <circle cx="230" cy="70" r="6" fill="none" stroke="#FFF9F1" stroke-width="3" opacity="0.8"/>
+        </g>
+        <!-- livello 2: lockup logo + gatto (soggetto, parallax lento) -->
+        <g data-plx="0.09">
+          <!-- wordmark: GIANGATT + O disegnata come anello -->
+          <text x="396" y="272" text-anchor="end" fill="#FFF9F1"
+                style="font-family: var(--font-display); font-size: 72px; letter-spacing: 0.01em">GiANGATT</text>
+          <circle cx="448" cy="240" r="26" fill="none" stroke="#FFF9F1" stroke-width="22"/>
+          <!-- gattone sornione appollaiato -->
+          <g class="cat-breathe">
+            <!-- corpo: dorso arancio, petto bianco -->
+            <ellipse cx="452" cy="180" rx="66" ry="46" fill="#FFF9F4" stroke="#3B2C4A" stroke-width="4"/>
+            <clipPath id="ggBody"><ellipse cx="452" cy="180" rx="66" ry="46"/></clipPath>
+            <g clip-path="url(#ggBody)">
+              <ellipse cx="462" cy="150" rx="66" ry="32" fill="#FFC488"/>
+              <path d="M436 138 q6 14 -1 26 M462 134 q6 15 -1 28 M488 140 q6 13 -1 24"
+                    fill="none" stroke="#F09A3E" stroke-width="8" stroke-linecap="round"/>
+            </g>
+            <!-- testa 3/4 con espressione compiaciuta -->
+            <path d="M388 92 L392 60 L416 78 Z" fill="#FFC488" stroke="#3B2C4A" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M394 84 L396 68 L408 78 Z" fill="#A87C94"/>
+            <path d="M446 88 L444 56 L420 74 Z" fill="#FFC488" stroke="#3B2C4A" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M440 80 L438 64 L428 74 Z" fill="#A87C94"/>
+            <circle cx="418" cy="118" r="38" fill="#FFC488" stroke="#3B2C4A" stroke-width="4"/>
+            <path d="M404 86 q4 10 -1 18 M418 84 q4 11 -1 20 M432 86 q4 10 -1 18"
+                  fill="none" stroke="#F09A3E" stroke-width="7" stroke-linecap="round"/>
+            <ellipse cx="414" cy="134" rx="24" ry="16" fill="#FFF9F4"/>
+            <!-- sopracciglia + occhi a mezza palpebra con pupille -->
+            <path d="M398 98 q7 -5 14 -3 M430 96 q7 -3 14 -1"
+                  fill="none" stroke="#3B2C4A" stroke-width="3" stroke-linecap="round"/>
+            <path d="M400 108 q7 4 14 3 M434 106 q7 2 14 1"
+                  fill="none" stroke="#3B2C4A" stroke-width="3.5" stroke-linecap="round"/>
+            <ellipse cx="409" cy="113" rx="3.2" ry="2.6" fill="#3B2C4A"/>
+            <ellipse cx="443" cy="110" rx="3.2" ry="2.6" fill="#3B2C4A"/>
+            <!-- nasino + sorrisetto -->
+            <path d="M413 124 q3 -2.5 6 0 l-3 3.5 Z" fill="#E98FA5"/>
+            <path d="M406 134 q8 6 17 3 q7 -2 8 -7" fill="none"
+                  stroke="#3B2C4A" stroke-width="3" stroke-linecap="round"/>
+            <!-- baffi + guanciotte -->
+            <path d="M388 124 L358 118 M388 132 L358 134 M446 120 L476 112 M446 128 L476 128"
+                  stroke="#3B2C4A" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="392" cy="130" rx="7" ry="4.5" fill="#FFB3C0" opacity="0.8"/>
+            <ellipse cx="448" cy="124" rx="7" ry="4.5" fill="#FFB3C0" opacity="0.8"/>
+            <!-- zampe anteriori appoggiate sulle lettere e sulla O -->
+            <path d="M382 176 Q366 186 351 204" fill="none" stroke="#3B2C4A" stroke-width="28" stroke-linecap="round"/>
+            <path d="M382 176 Q366 186 351 204" fill="none" stroke="#FFF9F4" stroke-width="21" stroke-linecap="round"/>
+            <path d="M428 176 Q420 186 417 200" fill="none" stroke="#3B2C4A" stroke-width="28" stroke-linecap="round"/>
+            <path d="M428 176 Q420 186 417 200" fill="none" stroke="#FFF9F4" stroke-width="21" stroke-linecap="round"/>
+            <path d="M345 208 v8 M354 210 v8 M411 204 v8 M420 206 v8"
+                  stroke="#3B2C4A" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <!-- coda a ricciolo attorno alla O -->
+          <g class="cat-tail">
+            <path d="M512 178 Q560 200 552 252 Q546 292 504 288" fill="none"
+                  stroke="#3B2C4A" stroke-width="26" stroke-linecap="round"/>
+            <path d="M512 178 Q560 200 552 252 Q546 292 504 288" fill="none"
+                  stroke="#F5B860" stroke-width="20" stroke-linecap="round"/>
+            <path d="M512 178 Q560 200 552 252 Q546 292 504 288" fill="none"
+                  stroke="#E8973F" stroke-width="20" stroke-linecap="round"
+                  stroke-dasharray="8 18" opacity="0.9"/>
+            <circle cx="504" cy="288" r="9" fill="#FFF3DD"/>
+          </g>
+          <!-- tagline -->
+          <text x="280" y="330" text-anchor="middle" fill="#2F2A3A"
+                style="font-family: var(--font-display); font-size: 17px; letter-spacing: 0.32em">REAL FOOD FOR HAPPY CATS ♡</text>
+        </g>
+      </svg>
+      <div class="hero-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>✦ Miao</span><span>✦ Gnam gnam</span><span>✦ Fusa in formissima</span><span>✦ Real food for happy cats</span><span>✦ 80% carne e pesce</span>
+    <span>✦ Miao</span><span>✦ Gnam gnam</span><span>✦ Fusa in formissima</span><span>✦ Real food for happy cats</span><span>✦ 80% carne e pesce</span>
+  </div>
+</div>
+
+<!-- ══ CATEGORIE ══ -->
+<section class="cats-nav wrap reveal">
+  <span class="eyebrow">I nostri prodotti</span>
+  <div class="chips">
+    <a class="chip" href="#prodotti">🍗 Pappa da dispensa</a>
+    <a class="chip" href="#dentro">✨ Integratori</a>
+    <a class="chip" href="#fuori">🛁 Igiene e cura</a>
+    <a class="chip" href="#">🎀 Accessori</a>
+    <a class="chip" href="#">🧶 Giochini</a>
+  </div>
+</section>
+
+<!-- ══ PRODOTTI ══ -->
+<section class="products wrap" id="prodotti">
+  <div class="grid3">
+    <article class="card reveal">
+      <span class="badge">80% pollo</span>
+      <div class="art">
+        <svg viewBox="0 0 200 190" width="180" role="img" aria-label="Gattone crema"
+             style="--fur:#FFE1B0; --stripe:#F4B96B; --outline:#3B2C4A">
+          <use href="#chubbyCat"/>
+        </svg>
+      </div>
+      <h3>My Name is Pollo</h3>
+      <p class="price">From €4,50</p>
+      <a class="btn btn-ghost" href="#">Scopri</a>
+    </article>
+    <article class="card reveal">
+      <span class="badge">80% tonno</span>
+      <div class="art">
+        <svg viewBox="0 0 200 190" width="180" role="img" aria-label="Gattone lilla"
+             style="--fur:#D9CFEF; --stripe:#B4A4DC; --outline:#3B2C4A">
+          <use href="#chubbyCat"/>
+        </svg>
+      </div>
+      <h3>My Name is Tonno</h3>
+      <p class="price">From €4,50</p>
+      <a class="btn btn-ghost" href="#">Scopri</a>
+    </article>
+    <article class="card reveal">
+      <span class="badge">80% salmone</span>
+      <div class="art">
+        <svg viewBox="0 0 200 190" width="180" role="img" aria-label="Gattone rosso"
+             style="--fur:#FFBE8C; --stripe:#F09A55; --outline:#3B2C4A">
+          <use href="#chubbyCat"/>
+        </svg>
+      </div>
+      <h3>My Name is Salmone</h3>
+      <p class="price">From €4,50</p>
+      <a class="btn btn-ghost" href="#">Scopri</a>
+    </article>
+  </div>
+</section>
+
+<!-- ══ BENESSERE DENTRO ══ -->
+<section class="split wrap" id="dentro">
+  <div class="split-inner">
+    <div class="split-art reveal">
+      <svg viewBox="0 0 240 200" width="300" role="img" aria-label="Gattone con integratore"
+           data-plx="0.06" style="--fur:#FFC488; --stripe:#F09A3E; --outline:#3B2C4A">
+        <use href="#chubbyCat" x="10" y="8"/>
+        <rect x="192" y="120" width="38" height="56" rx="10" fill="#B8A4FF"/>
+        <rect x="198" y="108" width="26" height="16" rx="6" fill="#8A70E6"/>
+        <ellipse cx="211" cy="150" rx="11" ry="8" fill="#F3EEFF"/>
+        <use href="#spark" x="214" y="78" fill="#FFD7C7" class="sparkle"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Benessere dentro</span>
+      <h2>Gli integratori che vanno su tutte le pappe</h2>
+      <p>Integratori naturali per gatti super facili da usare: una spolverata sopra
+      qualsiasi pappa del mondo per appetizzare e fare le fusa in formissima.
+      Ne abbiamo uno per ogni obiettivo.</p>
+      <ul class="checklist">
+        <li><strong>Boli di pelo sotto controllo</strong> con fibre vegetali e malto.</li>
+        <li><strong>Vie urinarie protette</strong> con mirtillo rosso ed estratti attivi.</li>
+        <li><strong>Pelo lucido e articolazioni felici</strong> con omega-3 e superfoods.</li>
+      </ul>
+      <a class="btn" href="#">Scopri i prodotti</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENESSERE FUORI ══ -->
+<section class="split flip wrap" id="fuori">
+  <div class="split-inner">
+    <div class="split-art reveal">
+      <svg viewBox="0 0 240 200" width="300" role="img" aria-label="Gattone con bolle di sapone"
+           data-plx="0.06" style="--fur:#FFFFFF; --stripe:#E8DFF5; --outline:#3B2C4A">
+        <use href="#chubbyCat" x="10" y="8"/>
+        <circle cx="205" cy="90" r="12" fill="none" stroke="#B8A4FF" stroke-width="4"/>
+        <circle cx="224" cy="118" r="8" fill="none" stroke="#B8A4FF" stroke-width="4"/>
+        <circle cx="208" cy="146" r="5" fill="none" stroke="#B8A4FF" stroke-width="4"/>
+        <use href="#spark" x="200" y="42" fill="#FFD7C7" class="sparkle s2"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Benessere fuori</span>
+      <h2>Skincare felina ipoallergenica e naturale</h2>
+      <p>Pelle sensibile che si irrita facilmente? Tensioattivi aggressivi e agenti esterni
+      non fanno che complicare la situazione. Con Giangatto ti prendi cura del manto a casa,
+      senza drammi (e senza graffi).</p>
+      <ul class="checklist">
+        <li><strong>Uso quotidiano sicuro</strong> anche su gattini e pelli tendenti a dermatiti.</li>
+        <li><strong>Alta concentrazione di attivi</strong> con funzione idratante e riparatrice.</li>
+        <li><strong>Spazzolatura facile e anti-nodi</strong>, così fai prima e nessuno si stressa.</li>
+      </ul>
+      <a class="btn" href="#">Scopri i prodotti</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MISSION ══ -->
+<section class="mission" id="mission">
+  <h2>Formule sicure, perfette per il tuo gatto</h2>
+  <p>La nostra mission è sviluppare prodotti veterinari che aiutano a prevenire i problemi
+  di salute più comuni nei gatti. Formule pulite, ipocaloriche e ipoallergeniche, con la più
+  alta concentrazione di ingredienti attivi e vegetali — così facili che puoi usarle ogni
+  giorno senza stress.</p>
+  <a class="btn" href="#">Scopri chi siamo</a>
+</section>
+
+<!-- ══ COMMUNITY ══ -->
+<section class="community wrap reveal">
+  <h2 class="display" style="font-size:1.5rem">🤳 unisciti alla community e seguici su @giangatto</h2>
+  <div class="igrow" aria-hidden="true">
+    <div class="ph">😺</div><div class="ph">🐟</div><div class="ph">🧶</div>
+    <div class="ph">😻</div><div class="ph">🌸</div><div class="ph">🐾</div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section class="newsletter wrap">
+  <div class="news-box reveal">
+    <h2>💌 Iscriviti 💌</h2>
+    <p>Ricevi subito il <strong>10% di sconto</strong>!<br>
+    Diventa parte della community Giangatto e ricevi le promo esclusive 🐱 💜 🍑</p>
+    <a class="btn" href="#">Scopri lo sconto</a>
+    <small>Iscrivendoti, accetti di ricevere comunicazioni di marketing da parte nostra.
+    Per annullare l'iscrizione, clicca su "unsubscribe" in fondo alle nostre e-mail.</small>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site">
+  <a class="logo" href="#">
+    <svg class="mark" width="38" height="38" viewBox="0 0 48 48" aria-hidden="true"><use href="#logoMark"/></svg>
+    <span class="word"><span>G</span><span>i</span><span>A</span><span>N</span><span>G</span><span>A</span><span>T</span><span>T</span><span>o</span></span>
+  </a>
+  <p class="tagline">Real food for happy cats 🧡</p>
+  <p>Mockup di design — tutti i prodotti sono placeholder.<br>
+  © 2026 Giangatto · Fatto con 💜 e tante fusa</p>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Parallax: layer dell'hero legati allo scroll + puntatore, illustrazioni
+  // di sezione legate alla posizione nel viewport.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const layers = [...document.querySelectorAll('[data-plx]')];
+    const heroArt = document.querySelector('.hero-art');
+    let mx = 0, my = 0;
+    heroArt.addEventListener('pointermove', (e) => {
+      const r = heroArt.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5;
+      my = (e.clientY - r.top) / r.height - 0.5;
+    });
+    heroArt.addEventListener('pointerleave', () => { mx = 0; my = 0; });
+
+    const tick = () => {
+      const vhMid = innerHeight / 2;
+      for (const el of layers) {
+        const s = parseFloat(el.dataset.plx);
+        if (el.closest('.hero-art')) {
+          const dx = mx * s * 160;
+          const dy = scrollY * s * 1.6 + my * s * 120;
+          el.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
+        } else {
+          const r = el.parentElement.getBoundingClientRect();
+          const dy = (r.top + r.height / 2 - vhMid) * -s;
+          el.style.transform = `translate3d(0, ${dy.toFixed(1)}px, 0)`;
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+</script>
+</body>
+</html>
