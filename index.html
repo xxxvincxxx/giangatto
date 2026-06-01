@@ -337,6 +337,211 @@
     };
     requestAnimationFrame(tick);
   }
+
+  // ── Ballpit Background Animation ────────────────
+  (() => {
+    const canvas = document.getElementById('ballpit-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const count = 80;
+    const gravity = 0.5;
+    const friction = 0.927;
+    const wallBounce = 0.94;
+    const colors = ["#BFAEF8", "#7cff67", "#ff6b6b"];
+
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let dpr = window.devicePixelRatio || 1;
+    const balls = [];
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let mouseActive = false;
+
+    function resize() {
+      const rect = hero.getBoundingClientRect();
+      canvasWidth = rect.width;
+      canvasHeight = rect.height;
+      canvas.width = canvasWidth * dpr;
+      canvas.height = canvasHeight * dpr;
+      canvas.style.width = canvasWidth + 'px';
+      canvas.style.height = canvasHeight + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function init() {
+      resize();
+      balls.length = 0;
+      for (let i = 0; i < count; i++) {
+        const radius = Math.floor(Math.random() * 11) + 12; // 12px to 22px
+        balls.push({
+          x: Math.random() * (canvasWidth - radius * 2) + radius,
+          y: Math.random() * (canvasHeight / 2 - radius) + radius,
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
+          radius: radius,
+          mass: radius * radius,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+    }
+
+    // Pointer events on hero
+    hero.addEventListener('pointermove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+      mouseActive = true;
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      mouseActive = false;
+    });
+
+    hero.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        const rect = hero.getBoundingClientRect();
+        mouseX = e.touches[0].clientX - rect.left;
+        mouseY = e.touches[0].clientY - rect.top;
+        mouseActive = true;
+      }
+    }, { passive: true });
+
+    hero.addEventListener('touchend', () => {
+      mouseActive = false;
+    });
+
+    function update() {
+      // 1. Position and velocity updates
+      for (let i = 0; i < balls.length; i++) {
+        const b = balls[i];
+        b.vy += gravity;
+        b.vx *= friction;
+        b.vy *= friction;
+        b.x += b.vx;
+        b.y += b.vy;
+      }
+
+      // 2. Ball to ball collisions
+      for (let step = 0; step < 2; step++) {
+        for (let i = 0; i < balls.length; i++) {
+          for (let j = i + 1; j < balls.length; j++) {
+            const bi = balls[i];
+            const bj = balls[j];
+            const dx = bj.x - bi.x;
+            const dy = bj.y - bi.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const minDist = bi.radius + bj.radius;
+            if (dist < minDist) {
+              const overlap = minDist - dist;
+              const nx = dx / (dist || 1);
+              const ny = dy / (dist || 1);
+
+              const totalMass = bi.mass + bj.mass;
+              bi.x -= overlap * (bj.mass / totalMass) * nx;
+              bi.y -= overlap * (bj.mass / totalMass) * ny;
+              bj.x += overlap * (bi.mass / totalMass) * nx;
+              bj.y += overlap * (bi.mass / totalMass) * ny;
+
+              const rvx = bj.vx - bi.vx;
+              const rvy = bj.vy - bi.vy;
+              const velAlongNormal = rvx * nx + rvy * ny;
+
+              if (velAlongNormal < 0) {
+                const e = wallBounce;
+                const impulse = -(1 + e) * velAlongNormal / (1 / bi.mass + 1 / bj.mass);
+
+                bi.vx -= (impulse / bi.mass) * nx;
+                bi.vy -= (impulse / bi.mass) * ny;
+                bj.vx += (impulse / bj.mass) * nx;
+                bj.vy += (impulse / bj.mass) * ny;
+              }
+            }
+          }
+        }
+      }
+
+      // 3. Mouse interaction
+      if (mouseActive) {
+        const mouseRadius = 60;
+        for (let i = 0; i < balls.length; i++) {
+          const b = balls[i];
+          const dx = b.x - mouseX;
+          const dy = b.y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const minDist = b.radius + mouseRadius;
+          if (dist < minDist) {
+            const overlap = minDist - dist;
+            const nx = dx / (dist || 1);
+            const ny = dy / (dist || 1);
+
+            b.x += overlap * nx;
+            b.y += overlap * ny;
+
+            b.vx = b.vx * 0.4 + nx * 8;
+            b.vy = b.vy * 0.4 + ny * 8;
+          }
+        }
+      }
+
+      // 4. Wall collisions
+      for (let i = 0; i < balls.length; i++) {
+        const b = balls[i];
+        if (b.x < b.radius) {
+          b.x = b.radius;
+          b.vx = -b.vx * wallBounce;
+        } else if (b.x > canvasWidth - b.radius) {
+          b.x = canvasWidth - b.radius;
+          b.vx = -b.vx * wallBounce;
+        }
+
+        if (b.y < b.radius) {
+          b.y = b.radius;
+          b.vy = -b.vy * wallBounce;
+        } else if (b.y > canvasHeight - b.radius) {
+          b.y = canvasHeight - b.radius;
+          b.vy = -b.vy * wallBounce;
+          b.vx *= 0.98; // sliding friction
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      for (let i = 0; i < balls.length; i++) {
+        const b = balls[i];
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        ctx.fillStyle = b.color;
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('resize', () => {
+      const oldWidth = canvasWidth;
+      const oldHeight = canvasHeight;
+      resize();
+      if (oldWidth && oldHeight) {
+        for (let i = 0; i < balls.length; i++) {
+          balls[i].x = (balls[i].x / oldWidth) * canvasWidth;
+          balls[i].y = (balls[i].y / oldHeight) * canvasHeight;
+        }
+      }
+    });
+
+    init();
+    loop();
+  })();
 </script>
 </body>
 </html>
