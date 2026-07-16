@@ -349,11 +349,11 @@
     const hero = document.querySelector('.hero');
     if (!hero) return;
 
-    const count = 80;
+    const count = 19;
     const gravity = 0.5;
     const friction = 0.927;
     const wallBounce = 0.94;
-    const colors = ["#BFAEF8", "#7cff67", "#ff6b6b"];
+    const colors = ["#B8A4FF", "#FFB89B", "#8A70E6"];
 
     let canvasWidth = 0;
     let canvasHeight = 0;
@@ -379,7 +379,7 @@
       resize();
       balls.length = 0;
       for (let i = 0; i < count; i++) {
-        const radius = Math.floor(Math.random() * 11) + 12; // 12px to 22px
+        const radius = Math.floor(Math.random() * 25) + 8; // 8px to 32px
         balls.push({
           x: Math.random() * (canvasWidth - radius * 2) + radius,
           y: Math.random() * (canvasHeight / 2 - radius) + radius,
@@ -514,6 +514,7 @@
 
     function draw() {
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      ctx.globalAlpha = 0.35; // make balls transparent
       for (let i = 0; i < balls.length; i++) {
         const b = balls[i];
         ctx.beginPath();
@@ -522,6 +523,7 @@
         ctx.fill();
         ctx.closePath();
       }
+      ctx.globalAlpha = 1.0; // reset transparency
     }
 
     function loop() {
