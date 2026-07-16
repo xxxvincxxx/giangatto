@@ -46,7 +46,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-display);
   line-height: 1.55;
 }
 h1, h2, h3, .display {
